@@ -1,22 +1,22 @@
 {
     "name": "@kitmodule/kitjs",
-    "version": "1.0.0",
-    "description": "Lightweight, SSR-ready JavaScript component framework",
-    "main": "dist/kitjs.js",
-    "unpkg": "dist/kitjs.js",
-    "author": "Huỳnh Nhân Quốc",
-    "homepage": "https://github.com/kitmodule/kitjs#readme",
+    "version": "0.1.0",
+    "description": "A JavaScript framework written by a dreamer",
+    "main": "dist/kit.js",
+    "unpkg": "dist/kit.js",
+    "homepage": "https://kitjs.org",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/kitmodule/kitjs.git"
     },
     "keywords": [
         "kitjs",
-        "kitcomponents",
+        "kit components",
         "kitjs by kitmodule"
     ],
     "bugs": {
         "url": "https://github.com/kitmodule/kitjs/discussions"
     },
+    "author": "Huỳnh Nhân Quốc",
     "license": "MIT"
 }

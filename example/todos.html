@@ -1,52 +1,12 @@
+<!DOCTYPE html>
+<html lang="vi">
 
-# 🌿 Kit JS
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit JS - Todo List Example</title>
+</head>
 
-> A JavaScript framework written by a dreamer.
-> Not to rival the giants — but to remind us that JavaScript can still be pure, simple, and close to HTML.
-
-
-**Kit JS** is a **lightweight, SSR-ready JavaScript framework** that turns your plain HTML into **reactive, component-based UI** — without any builds, bundlers, or complexity.
-
-It was born from a small dream
-to make every HTML element **alive**, **meaningful**, and **reactive** —
-just by writing **HTML that feels natural again**.
-
-No build steps.
-No virtual DOM.
-Just **you**, the **browser**, and **a little dream** in every line of code.
-
-
-## ✨ Features
-
-* ⚡ **Lightweight & Fast** – Minimal runtime, instant reactivity.
-* 💡 **HTML-First** – Define logic, state, and events right in your markup.
-* 🔄 **Reactive by Design** – Automatic DOM updates when state changes.
-* 🌐 **SSR-Ready** – Perfect for server-rendered pages and hydration.
-* 🔒 **Secure** – Fully compatible with **Content Security Policy (CSP)**.
-* 🚀 **Zero Build Step** – No bundlers, compilers, or configs required.
-* 🧩 **Declarative & Reusable** – Components are just HTML scopes.
-
-
-## ⚡ Quick Start
-
-Load Kit JS via CDN:
-
-```html
-<script src="//unpkg.com/@kitmodule/kitjs"></script>
-```
-
-Or install with npm:
-
-```bash
-npm install @kitmodule/kitjs
-```
-
-
-## ✅ Example: Todo List
-
-A real-world example showing how **state**, **loops**, **bindings**, and **events** can be defined directly in HTML.
-
-```html
 <body
     style="font-family: sans-serif ;background-color: #f5f5f5 ;display: flex ;justify-content: center ;padding: 40px;">
 
@@ -71,7 +31,7 @@ A real-world example showing how **state**, **loops**, **bindings**, and **event
 
         <div style="padding: 24px ;display: flex ;flex-direction: column ;gap: 9px;">
             <div style="display: flex ;background: #fafafa ;padding: 6px 12px ;text-align: left ;border-radius: 8px ;box-shadow: 0 1px 2px rgba(0,0,0,0.05) ;"
-                data-kit-for="let (item, index) of todos ; id as $key">
+                data-kit-for="let (item, index) of todos ;id as $key">
 
                 <div style="display: flex ;align-items: center ;justify-content: space-between ;gap: 6px ;width: 100%;">
                     <div style="display: flex ;align-items: center ;justify-content: space-between ;gap: 12px;">
@@ -99,7 +59,7 @@ A real-world example showing how **state**, **loops**, **bindings**, and **event
         </div>
     </div>
 
-       <script src="//unpkg.com/@kitmodule/kitjs"></script>
+   <script src="//unpkg.com/@kitmodule/kitjs"></script>
 
     <script>
         Kit.define("todo", {
@@ -127,35 +87,5 @@ A real-world example showing how **state**, **loops**, **bindings**, and **event
             }
         });</script>
 </body>
-```
 
-
-## 🔍 How It Works
-
-| Attribute                | Description                                                |
-| ------------------------ | ---------------------------------------------------------- |
-| `data-kit-scope="$todo"` | Defines a reactive scope named `$todo`.                    |
-| `data-kit-model`         | Two-way binds an input to a state variable.                |
-| `data-kit-event`         | Declares event listeners directly in HTML (`click:add()`). |
-| `data-kit-for`           | Repeats elements based on an array (`todos`).              |
-| `data-kit-bind`          | Dynamically binds text or expressions.                     |
-| `data-kit-style`         | Reactively updates inline styles.                          |
-| `kit.$todo`              | Access the scope instance globally for manual triggers.    |
-
-
-## 🧩 Philosophy
-
-> **Kit JS** is not built to compete.
-> It exists to **remind** — that the web was always meant to be **simple, declarative, and alive**.
->
-> If you believe HTML and JavaScript can be one again —
-> then Kit JS is your companion in that dream.
-
-
-## 🧠 License
-
-Released under the [MIT License](https://github.com/kitmodule/kitjs/blob/master/LICENSE)
-
-© 2025 ~ time.Now()
-**Huỳnh Nhân Quốc** – Founder of [Kit Module](https://kitmodule.com)
-
+</html>
