@@ -35,11 +35,6 @@ Load Kit JS via CDN:
 <script src="//unpkg.com/@kitmodule/kitjs"></script>
 ```
 
-Or install with npm:
-
-```bash
-npm install @kitmodule/kitjs
-```
 
 
 ## ✅ Example: Todo List
@@ -99,7 +94,7 @@ A real-world example showing how **state**, **loops**, **bindings**, and **event
         </div>
     </div>
 
-       <script src="//unpkg.com/@kitmodule/kitjs"></script>
+     <script src="//unpkg.com/@kitmodule/kitjs"></script>
 
     <script>
         Kit.define("todo", {
