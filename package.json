@@ -1,7 +1,7 @@
 {
     "name": "@kitmodule/kitjs",
-    "version": "0.1.0",
-    "description": "A JavaScript framework written by a dreamer",
+    "version": "1.0.0",
+    "description": "A lightweight JavaScript framework that hydrates static or server-rendered HTML while enhancing the DOM’s natural interactivity.",
     "main": "dist/kit.js",
     "unpkg": "dist/kit.js",
     "homepage": "https://kitjs.org",
@@ -18,5 +18,9 @@
         "url": "https://github.com/kitmodule/kitjs/discussions"
     },
     "author": "Huỳnh Nhân Quốc",
-    "license": "MIT"
+    "license": "MIT",
+    "scripts": {
+        "build": "echo 'build step here'",
+        "prepublishOnly": "npm run build"
+    }
 }
