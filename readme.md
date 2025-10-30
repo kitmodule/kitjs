@@ -6,11 +6,6 @@
 [![npm version](https://img.shields.io/npm/v/@kitmodule/kitjs.svg)](https://www.npmjs.com/package/@kitmodule/kitjs)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## ✨ Features
-
-À mình hiểu rồi. Bạn muốn giữ **README với các icon** như cũ nhưng không dùng dash và câu văn hoàn chỉnh, phải không? Mình viết lại toàn bộ **mục Features** theo phong cách này:
-
-
 ### ✨ Features
 
 ⚡ Lightweight and fast with minimal runtime
@@ -101,7 +96,11 @@ Kit.define("todo", {
   todos: [],
   add() {
     if (!this.newTask.trim()) return
-    this.todos.unshift({ text: this.newTask, completed: false })
+    this.todos.unshift({ 
+         id: Math.random(),
+        text: this.newTask, 
+        completed: false
+         })
     this.newTask = ""
   },
   remove(i) { this.todos.splice(i, 1) },
