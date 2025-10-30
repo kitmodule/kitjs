@@ -1,156 +1,243 @@
+# 🌿 KitJS
 
-# 🌿 Kit JS
+> A lightweight HTML-first JavaScript framework
+> for developers who want the web to stay simple reactive and seamlessly enhanced on the server
 
-> A JavaScript framework written by a dreamer.
-> Not to rival the giants — but to remind us that JavaScript can still be pure, simple, and close to HTML.
-
-
-**Kit JS** is a **lightweight, SSR-ready JavaScript framework** that turns your plain HTML into **reactive, component-based UI** — without any builds, bundlers, or complexity.
-
-It was born from a small dream
-to make every HTML element **alive**, **meaningful**, and **reactive** —
-just by writing **HTML that feels natural again**.
-
-No build steps.
-No virtual DOM.
-Just **you**, the **browser**, and **a little dream** in every line of code.
-
+[![npm version](https://img.shields.io/npm/v/@kitmodule/kitjs.svg)](https://www.npmjs.com/package/@kitmodule/kitjs)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## ✨ Features
 
-* ⚡ **Lightweight & Fast** – Minimal runtime, instant reactivity.
-* 💡 **HTML-First** – Define logic, state, and events right in your markup.
-* 🔄 **Reactive by Design** – Automatic DOM updates when state changes.
-* 🌐 **SSR-Ready** – Perfect for server-rendered pages and hydration.
-* 🔒 **Secure** – Fully compatible with **Content Security Policy (CSP)**.
-* 🚀 **Zero Build Step** – No bundlers, compilers, or configs required.
-* 🧩 **Declarative & Reusable** – Components are just HTML scopes.
+À mình hiểu rồi. Bạn muốn giữ **README với các icon** như cũ nhưng không dùng dash và câu văn hoàn chỉnh, phải không? Mình viết lại toàn bộ **mục Features** theo phong cách này:
 
+
+### ✨ Features
+
+⚡ Lightweight and fast with minimal runtime
+💡 HTML-first meaning logic and state live directly in your markup
+🔄 Reactive by design keeping DOM and data in sync automatically
+🌐 SSR-ready and works seamlessly with server-rendered pages
+🔒 Fully secure and compatible with Content Security Policy
+🧩 No build tools required simply include a `<script>` tag
 
 ## ⚡ Quick Start
 
-Load Kit JS via CDN:
+Include KitJS from a CDN
 
 ```html
-<script src="//unpkg.com/@kitmodule/kitjs"></script>
+<script src="https://unpkg.com/@kitmodule/kitjs"></script>
 ```
 
+Or install using npm
 
+```bash
+npm install @kitmodule/kitjs
+```
 
-## ✅ Example: Todo List
-
-A real-world example showing how **state**, **loops**, **bindings**, and **events** can be defined directly in HTML.
+### Your first reactive component
 
 ```html
-<body
-    style="font-family: sans-serif ;background-color: #f5f5f5 ;display: flex ;justify-content: center ;padding: 40px;">
+<div data-kit-scope="counter">
+  <button data-kit-click="decrement()">-</button>
+  <span data-kit-bind="count"></span>
+  <button data-kit-click="increment()">+</button>
+</div>
 
-    <div data-kit-scope="$todo"
-        style="background: #fff ;padding: 24px 0 ;min-width: 600px ;text-align: center ;border-radius: 12px ;box-shadow: 0 4px 10px rgba(0,0,0,0.1) ;">
-
-        <h1 style="padding: 12px 0 ;font-size: 24px ;text-transform: capitalize;">
-            Danh sách việc cần làm
-        </h1>
-
-        <div style="display: flex ;gap: 12px ;padding: 0 24px;">
-            <input onkeydown="if (event.key === 'Enter') kit.$todo.add()"
-                style="flex: 1 ;background: #fafafa ;border: 1px solid #ddd ;border-radius: 8px ;padding: 9px 12px ;box-shadow: 0 1px 2px rgba(0,0,0,0.05) ;font-size: 16px ;"
-                data-focus-class="border-info" type="text" placeholder="Thêm việc cần làm" data-kit-model="todo">
-
-            <button hidden
-                style="background: #0d6efd ;border: none ;color: white ;border-radius: 8px ;padding: 9px 12px ;box-shadow: 0 1px 2px rgba(0,0,0,0.1) ;cursor: pointer ;"
-                data-kit-event="click:add()">
-                <i class="fa-solid fa-plus"></i>
-            </button>
-        </div>
-
-        <div style="padding: 24px ;display: flex ;flex-direction: column ;gap: 9px;">
-            <div style="display: flex ;background: #fafafa ;padding: 6px 12px ;text-align: left ;border-radius: 8px ;box-shadow: 0 1px 2px rgba(0,0,0,0.05) ;"
-                data-kit-for="let (item, index) of todos ; id as $key">
-
-                <div style="display: flex ;align-items: center ;justify-content: space-between ;gap: 6px ;width: 100%;">
-                    <div style="display: flex ;align-items: center ;justify-content: space-between ;gap: 12px;">
-                        <input type="checkbox" data-kit-model="item.completed">
-                        <div data-kit-bind="text:$item.todo"
-                            data-kit-style="text-decoration: $item.completed ? 'line-through' : 'none'">
-                        </div>
-                    </div>
-
-                    <button
-                        style="    border: none ;background: transparent ;color: #dc3545 ;border-radius: 6px ;padding: 6px 9px ;cursor: pointer ;transition: background 0.2s ;"
-                        onmouseover="this.style.background='rgba(220,53,69,0.05)'"
-                        onmouseout="this.style.background='transparent'" data-kit-event="click:del(index)">
-                        xóa
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div style="padding: 12px 24px ;text-align: left;">
-            <span data-kit-bind="completeds">0</span>
-            <span>/</span>
-            <span data-kit-bind="text:todos.length">0</span>
-            số việc đã hoàn thành
-        </div>
-    </div>
-
-     <script src="//unpkg.com/@kitmodule/kitjs"></script>
-
-    <script>
-        Kit.define("todo", {
-            todo: "",
-            todos: [],
-            add() {
-                if (this.todo.trim() === "") {
-                    alert("Việc làm không được để trống"); return;
-                }
-                this.todos.unshift({
-                    id: Math.random(),
-                    todo: this.todo,
-                    completed: false
-                }); this.todo = "";
-            },
-
-            del(index) {
-                if (index !== -1) {
-                    this.todos.splice(index, 1);
-                }
-            },
-
-            get completeds() {
-                return this.todos.filter(todo => todo.completed).length;
-            }
-        });</script>
-</body>
+<script>
+Kit.define("counter", {
+  count: 0,
+  increment() { this.count++ },
+  decrement() { this.count-- },
+})
+</script>
 ```
 
+✅ No build tools
+✅ No virtual DOM
+✅ HTML that reacts naturally
 
-## 🔍 How It Works
+## 🧩 Core Directives
 
-| Attribute                | Description                                                |
-| ------------------------ | ---------------------------------------------------------- |
-| `data-kit-scope="$todo"` | Defines a reactive scope named `$todo`.                    |
-| `data-kit-model`         | Two-way binds an input to a state variable.                |
-| `data-kit-event`         | Declares event listeners directly in HTML (`click:add()`). |
-| `data-kit-for`           | Repeats elements based on an array (`todos`).              |
-| `data-kit-bind`          | Dynamically binds text or expressions.                     |
-| `data-kit-style`         | Reactively updates inline styles.                          |
-| `kit.$todo`              | Access the scope instance globally for manual triggers.    |
+| Purpose                    | Directive or Syntax                                                        | Example                                                 |
+| -------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Define reactive scope      | `data-kit-scope="$alias"` for unique or `data-kit-scope="name"` for shared | `<div data-kit-scope="$todo">`                          |
+| Bind text or expression    | `data-kit-bind`                                                            | `<span data-kit-bind="user.name">`                      |
+| Two-way input binding      | `data-kit-model`                                                           | `<input data-kit-model="email">`                        |
+| One-time DOM to state sync | `data-kit-sync`                                                            | `<input value="John" data-kit-sync="user.name">`        |
+| Event binding              | `data-kit-click` or `data-kit-event`                                       | `<button data-kit-click="save()">`                      |
+| Keyboard events            | `data-kit-keydown:enter`                                                   | `<input data-kit-keydown:enter="submit()">`             |
+| Conditional display        | `data-kit-show`                                                            | `<div data-kit-show="open">`                            |
+| Dynamic class binding      | `data-kit-class`                                                           | `<div data-kit-class="active ? 'bg-red' : 'bg-green'">` |
+| Reactive styles            | `data-kit-style`                                                           | `<p data-kit-style="color: done ? 'green':'red'">`      |
+| Loop or repeat             | `data-kit-for`                                                             | `<li data-kit-for="todo of todos">`                     |
 
+## 💡 Example Todo List
 
-## 🧩 Philosophy
+```html
+<div data-kit-scope="todo">
+  <h2>Todo List</h2>
+  <input data-kit-model="newTask" data-kit-keydown:enter="add()">
+  <button data-kit-click="add()">Add</button>
 
-> **Kit JS** is not built to compete.
-> It exists to **remind** — that the web was always meant to be **simple, declarative, and alive**.
->
-> If you believe HTML and JavaScript can be one again —
-> then Kit JS is your companion in that dream.
+  <ul>
+    <li data-kit-for="(item, i) of todos">
+      <input type="checkbox" data-kit-model="item.completed">
+      <span data-kit-bind="item.text"></span>
+      <button data-kit-click="remove(i)">x</button>
+    </li>
+  </ul>
 
+  <div style="padding:12px 24px; text-align:left;">
+    <span data-kit-bind="completeds">0</span>
+    <span>/</span>
+    <span data-kit-bind="text:todos.length">0</span>
+    completed tasks
+  </div>
+</div>
 
-## 🧠 License
+<script>
+Kit.define("todo", {
+  newTask: "",
+  todos: [],
+  add() {
+    if (!this.newTask.trim()) return
+    this.todos.unshift({ text: this.newTask, completed: false })
+    this.newTask = ""
+  },
+  remove(i) { this.todos.splice(i, 1) },
+  get completeds() {
+    return this.todos.filter(todo => todo.completed).length
+  }
+})
+</script>
+```
 
-Released under the [MIT License](https://github.com/kitmodule/kitjs/blob/master/LICENSE)
+## 🔁 One-time Sync
 
-© 2025 ~ time.Now()
-**Huỳnh Nhân Quốc** – Founder of [Kit Module](https://kitmodule.com)
+`data-kit-sync` hydrates your state from existing DOM values making it ideal for server-rendered or static pages.
 
+```html
+<div data-kit-scope="$user">
+  <input value="Alice" data-kit-sync="user.name">
+  <p>Hello, <span data-kit-bind="user.name"></span>!</p>
+</div>
+
+<script>
+Kit.define("user", { user: { name: "" } })
+</script>
+```
+
+The `user.name` value becomes `"Alice"` automatically when the page loads.
+
+## ⚙️ Element Spine
+
+Each DOM element has a reactive spine exposing scope state and ownership.
+
+| Property                 | Description                         |
+| ------------------------ | ----------------------------------- |
+| `$get(name)`             | Get directive value                 |
+| `$set(name, value)`      | Set directive value                 |
+| `$value`                 | Get or set element content or value |
+| `$component`             | Owning component instance           |
+| `$state`                 | Reactive state object               |
+| `$find(name)`            | Query within current scope          |
+| `$dispatch(type, event)` | Trigger event handlers manually     |
+
+```js
+const input = document.querySelector("input[data-kit-model='name']")
+console.log(input.$state.name)
+```
+
+## 🧠 Event System
+
+KitJS supports expressive event syntax with modifiers and variants
+
+```html
+<input data-kit-keydown:enter:stop:prevent="submit()">
+<button data-kit-click:once="save()">Save</button>
+```
+
+| Modifier               | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| `once`                 | Run once and remove listener                 |
+| `stop`                 | Call stopPropagation                         |
+| `prevent`              | Call preventDefault                          |
+| `debounce:300`         | Delay execution by 300 milliseconds          |
+| `throttle:500`         | Limit execution to once per 500 milliseconds |
+| `outside`              | Trigger when clicking outside element        |
+| `window` or `document` | Attach listener globally                     |
+
+```html
+<div data-kit-scope="$modal">
+  <div data-kit-show="open">Modal content</div>
+  <button data-kit-click="open = true">Open</button>
+  <div data-kit-click:outside="open = false"></div>
+</div>
+```
+
+## 🧩 Built-in Utilities
+
+```js
+el.$dataset    // Reactive directive dataset
+el.$owner()    // Nearest component root
+el.$find('bind') // Query directive inside scope
+```
+
+These utilities make KitJS introspective and hackable.
+
+## 🌐 SSR and Progressive Enhancement
+
+```html
+<div data-kit-scope="$profile">
+  <h2 data-kit-bind="name">Alice</h2>
+  <input value="Alice" data-kit-sync="name">
+</div>
+
+<script>
+Kit.define("profile", { name: "" })
+</script>
+```
+
+On hydration state automatically picks up DOM data with no mismatches and no re-rendering.
+
+### Benefits
+
+* Instant state recovery
+* Zero hydration errors
+* Works perfectly for static or server-rendered pages
+
+## 🌱 When to Use KitJS
+
+KitJS is not a competitor to React or Vue and it is for developers who want HTML to stay alive.
+
+Use it when you want to:
+
+* Build small reactive components directly in HTML
+* Enhance existing pages or templates
+* Create embeddable widgets or demos
+* Prototype quickly without a build step
+* Keep your stack framework-free
+
+Think of it as HTML with a pulse
+
+## 💭 Philosophy
+
+KitJS is not built to compete.
+It reminds us that the web can be simple reactive and human.
+HTML and JavaScript can live as one.
+
+KitJS is your quiet companion for reactive HTML.
+
+## 🧩 Examples
+
+| Example                                                 | Description              |
+| ------------------------------------------------------- | ------------------------ |
+| [Counter](https://github.com/kitmodule/kitjs/counter)   | Minimal state and events |
+| [Todo List](https://github.com/kitmodule/kitjs/todo)    | Loops and bindings       |
+| [Dropdown](https://github.com/kitmodule/kitjs/dropdown) | Conditional visibility   |
+| [Tags Input](https://github.com/kitmodule/kitjs/tags)   | Dynamic list editing     |
+
+## 🧪 License
+
+Released under the [MIT License](LICENSE)
+© 2025 Huỳnh Nhân Quốc · Founder of [Kit Module](https://kitmodule.com)
