@@ -2,26 +2,44 @@ name: Publish KitJS to NPM
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout code
       - uses: actions/checkout@v4
 
+      # Setup Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
-      - run: npm install        # dùng install vì không có package-lock.json
+      # Install dependencies
+      - run: npm install
 
+      # Tự động tăng patch version
+      - name: Bump patch version
+        run: |
+          npm version patch -m "Release %s"
+
+      # Push commit và tag mới
+      - name: Push commit and tag
+        run: |
+          git push origin main --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build project
       - run: npm run build
 
-      - run: npm publish --access public
+      # Publish package to NPM
+      - name: Publish to NPM
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
