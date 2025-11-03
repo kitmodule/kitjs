@@ -2,9 +2,8 @@ name: Publish KitJS to NPM
 
 on:
   push:
-    branches:
-      - main  # Chỉ chạy khi push commit vào main
-
+    tags:
+      - 'v*'
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -50,3 +49,4 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
