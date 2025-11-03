@@ -231,12 +231,22 @@ KitJS is your quiet companion for reactive HTML.
 
 | Example                                                 | Description              |
 | ------------------------------------------------------- | ------------------------ |
-| [Counter](https://github.com/kitmodule/kitjs/counter)   | Minimal state and events |
-| [Todo List](https://github.com/kitmodule/kitjs/todo)    | Loops and bindings       |
-| [Dropdown](https://github.com/kitmodule/kitjs/dropdown) | Conditional visibility   |
-| [Tags Input](https://github.com/kitmodule/kitjs/tags)   | Dynamic list editing     |
+| [Counter](https://github.com/kitmodule/kitjs/blob/master/example/counter.html)   | Minimal state and events |
+| [Todo List](https://github.com/kitmodule/kitjs/blob/master/example/todos.html)    | Loops and bindings       |
+| [Dropdown](https://github.com/kitmodule/kitjs/blob/master/example/dropdown.html) | Conditional visibility   |
+| [Tags Input](https://github.com/kitmodule/kitjs/blob/master/example/tags.html)   | Dynamic list editing     |
+
+## 💖 Funding
+
+If you love **KitJS** and want to support its development, you can sponsor or buy me a coffee ☕  
+
+- [GitHub Sponsors](https://github.com/sponsors/huynhnhanquoc)
+- [Patreon](https://patreon.com/huynhnhanquoc)
+- [Ko-fi](https://ko-fi.com/huynhnhanquoc)
+- [Buy Me a Coffee](https://www.buymeacoffee.com/huynhnhanquoc)
+- [PayPal](https://www.paypal.me/huynhnhanquoc)
 
 ## 🧪 License
 
 Released under the [MIT License](LICENSE)
-© 2025 Huỳnh Nhân Quốc · Founder of [Kit Module](https://kitmodule.com)
+© 2025 [Huỳnh Nhân Quốc](https://github.com/huynhnhanquoc) · Open Source [@Kit Module](https://github.com/kitmodule)
