@@ -8,15 +8,17 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
-      - run: npm ci
+      - run: npm install        # dùng install vì không có package-lock.json
 
       - run: npm run build
 

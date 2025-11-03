@@ -1,6 +1,6 @@
 {
     "name": "@kitmodule/kitjs",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A lightweight JavaScript framework that hydrates static or server-rendered HTML while enhancing the DOM’s natural interactivity.",
     "main": "dist/kit.js",
     "unpkg": "dist/kit.js",
