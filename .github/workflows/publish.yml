@@ -2,8 +2,8 @@ name: Publish KitJS to NPM
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main  # Chỉ chạy khi push commit vào main
 
 jobs:
   build-and-publish:
@@ -22,24 +22,30 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
-      # 3. Cài dependencies
+      # 3. Install dependencies
       - run: npm install
 
-      # 4. Tự động tăng patch version
+      # 4. Thiết lập git user để commit khi bump version
+      - name: Set git user
+        run: |
+          git config --global user.name "Huynh Nhan Quoc"
+          git config --global user.email "huynhnhanquoc@gmail.com"
+
+      # 5. Tự động tăng patch version
       - name: Bump patch version
         run: npm version patch -m "Release %s"
 
-      # 5. Push commit và tag mới lên main
+      # 6. Push commit + tag mới
       - name: Push commit and tag
         run: git push origin main --follow-tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 6. Build project
+      # 7. Build project
       - name: Build project
         run: npm run build
 
-      # 7. Publish package lên NPM
+      # 8. Publish package lên NPM
       - name: Publish to NPM
         run: npm publish --access public
         env:
